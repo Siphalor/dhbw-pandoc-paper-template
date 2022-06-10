@@ -473,7 +473,9 @@ $else$
 			\centering
 			\large
 			\begin{tabular}{p{8cm}l}
+			$if(working-period)$
 			\bfseries Bearbeitungszeitraum               & $working-period$              \\
+			$endif$
 			\bfseries Matrikelnummer, Kurs               & $for(matricle-number)$$matricle-number$$sep$ \& $endfor$, $course$   \\
 			$if(company)$
 			\bfseries Dualer Partner                     & $company$$if(company-location)$, $company-location$$endif$ \\

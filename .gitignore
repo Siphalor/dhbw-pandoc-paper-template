@@ -1,9 +1,0 @@
-*.sav
-*.bak
-*.tmp
-*.log
-.fuse_hidden*
-out/
-tmp/
-index.pdf
-index.html

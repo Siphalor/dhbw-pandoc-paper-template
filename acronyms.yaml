@@ -1,7 +1,0 @@
-acronyms:
-  options:
-    list/heading: chapter*
-    make-links: true
-  dhbw:
-    short: DHBW
-    long: Duale Hochschule Baden-Württemberg

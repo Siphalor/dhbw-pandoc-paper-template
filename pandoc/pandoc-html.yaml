@@ -1,0 +1,34 @@
+from: markdown
+to: html
+output-file: index.html
+
+input-files:
+  - index.md
+
+standalone: true
+
+table-of-contents: true
+
+number-sections: true
+top-level-division: chapter
+
+metadata: 
+  crossrefYaml: ./pandoc/pandoc-crossref.yaml
+
+metadata-files:
+  - acronyms.yaml
+
+csl: pandoc/ieee-with-url.csl
+bibliography:
+  - bibliography.bib
+
+strip-comments: true
+
+variables:
+  fontsize: 11.5pt
+  classoption:
+    - parskip=half
+  geometry:
+    - margin=2.5cm
+  papersize: a4
+  linestretch: 1.5

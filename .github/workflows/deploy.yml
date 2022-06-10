@@ -1,0 +1,32 @@
+---
+name: Deploy Pandoc
+
+on:
+  - push
+
+jobs:
+  pandoc:
+    runs-on: ubuntu-latest
+    container:
+      image: siphalor/extended-pandoc
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: 'recursive'
+      - name: Make PDF
+        run: make index.pdf
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        if: ${{ !env.ACT }}
+        with:
+          name: compiled
+          path: |
+            index.pdf
+          if-no-files-found: error
+      - name: Deploy to GitHub pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .

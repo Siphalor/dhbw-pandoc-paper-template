@@ -1,0 +1,10 @@
+---
+kind: pipeline
+type: docker
+name: Build Pandoc
+
+steps:
+  - name: build
+    image: siphalor/extended-pandoc
+    commands:
+      - make index.pdf

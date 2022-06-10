@@ -1,0 +1,24 @@
+figureTitle:  "Abbildung"
+tableTitle:   "Tabelle"
+listingTitle: "Listing"
+
+figPrefix:
+  - "Abbildung"
+  - "Abbildungen"
+tblPrefix:
+  - "Tabelle"
+  - "Tabellen"
+lstPrefix:
+  - "Listing"
+  - "Listings"
+eqnPrefix:
+  - "Gleichung"
+  - "Gleichungen"
+secPrefix:
+  - "Abschnitt"
+  - "Abschnitte"
+
+
+lofTitle: "Abbildungsverzeichnis"
+lotTitle: "Tabellenverzeichnis"
+lolTitle: "Listingverzeichnis"

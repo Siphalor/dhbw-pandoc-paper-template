@@ -1,3 +1,4 @@
+---
 from: markdown
 to: pdf
 output-file: index.pdf
@@ -13,7 +14,7 @@ table-of-contents: true
 number-sections: true
 top-level-division: chapter
 
-metadata: 
+metadata:
   crossrefYaml: ./pandoc/pandoc-crossref.yaml
   csquotes: true
 

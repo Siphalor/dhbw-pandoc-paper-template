@@ -10,6 +10,8 @@ jobs:
     container:
       image: siphalor/extended-pandoc
     steps:
+      - name: Install git
+        run: apk add --update --no-cache git
       - name: Checkout
         uses: actions/checkout@v2
         with:

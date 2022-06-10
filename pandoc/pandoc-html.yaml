@@ -6,6 +6,7 @@ input-files:
   - index.md
 
 standalone: true
+template: pandoc/template.html
 
 table-of-contents: true
 

@@ -28,9 +28,12 @@ jobs:
             index.pdf
           if-no-files-found: error
       - name: Copy Outputs
-        run: mv index.pdf out/
+        run: |
+          mkdir -p out
+          mv index.pdf out/
       - name: Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v3
+        if: ${{ !env.ACT }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out

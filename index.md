@@ -55,7 +55,7 @@ colorlinks: true # Colorize links, useful for the digital version
 
 # Einleitung
 
-Eine Vorlage, um wissenschaftliche Arbeiten für die +dhbw in Pandoc verfassen zu können.
+Eine Vorlage, um wissenschaftliche Arbeiten für die +dhbw in [Pandoc](https://pandoc.org) verfassen zu können.
 
 Dabei werden die in [@DHBW.2021] beschriebenen Richtlinien nach bestem Gewissen umgesetzt.
 
@@ -92,26 +92,31 @@ Unter Windows kann sich der entsprechende Befehl aus dem `Makefile` entnommen we
 
 ### Windows
 
-Im folgenden wird die installation unter Windows beschrieben. Zunächst öffnen wir eine Powershell Sitzung, vorzüglich [pwsh](https://github.com/powershell/powershell), denn die Microsoft proprietäre Implementierung ist besonders. 
+Im Folgenden wird die Installation unter Windows beschrieben.
+Die folgenden Befehle sollten in PowerShell ausgeführt werden (alternativ [pwsh](https://github.com/powershell/powershell)).
 
-Als package-manager wird scoop genutzt, denn der benötigt keine administrativen Rechte.
+Als Package Manager wird Scoop genutzt, da dieser einfache Installationen und Updates ohne administrative Rechte ermöglicht.
 ```pwsh
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh | iex
 ```
 
-Mit Pip werden die nicht auf scoop auffindbaren packages installiert.
+Weiterhin wird `pip` benötigt um die Python-basierten Extensions zu installieren:
 ```pwsh
 scoop install python
-python -m ensure pip
+python -m ensurepip
 ```
 
-Zu gut der Letzt benötigen wir noch Makefiles `make` command aus den GNU core utils. Hier verwenden wir die Rust Implementation.
+Nun benötigen wir noch den `make` command aus den GNU coreutils.
+Hier kann beispielsweise die Rust-Implementierung dieser Tools verwendet werden:
 ```pwsh
 scoop install uutils-coreutils
 ```
 
-Jetzt werden die [pandoc](https://pandoc.org/) Abhängigkeiten und eine Latex engine, hier [tinytex](https://github.com/rstudio/tinytex) eine [texlive](https://tug.org/texlive/) distribution, eingesetzt. Der nicht Konsolen-Freund sollte anstatt `tinytex` [MikTex](https://miktex.org/howto/install-miktex) als Benutzer installieren, das macht das verwalten von LaTex packages angenehmer.
+Abschließend werden jetzt die Pandoc- und Latex-Umgebung installiert.
+In den folgenden Befehlen wird [TinyTeX](https://github.com/rstudio/tinytex), eine [TeX-Live][https://tug.org/texlive/]-Distribution, verwendet.  
+Anstelle von `tinytex` kann auch [MikTex](https://miktex.org/howto/install-miktex) (bei Scoop als `miktex`) verwendet werden.
+Dies bietet unter anderem eine grafische Oberfläche und eine einsteigerfreundlichere Paket-Verwaltung.
 
 ```pwsh 
 # texlive installation
@@ -124,23 +129,24 @@ pip install pandoc-acro pandoc-include --user
 
 ### Linux
 
-Zunächst den [homebrew](https://brew.sh/) ~~package~~-manager installieren.
+Der Einfachheit halber am besten zunächst den [Homebrew](https://brew.sh/) Package Manager installieren:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Falls `pip` nicht installiert ist `python` `pip` beziehen. `python3` ist manchmal auch nur `python` o.ä. kommt auf Eur setup an.
+Python ist in den allermeisten Linux-Distributionen vorinstalliert, eventuell ist es als `python` statt `python3` verfügbar:
 ```bash
-python3 -m ensure pip
+python3 -m ensurepip
 ```
 
-Zu gut der Letzt können die [pandoc](https://pandoc.org/) Abhängigkeiten und die [texlive](https://tug.org/texlive/) LaTex engine installiert werden.
+Schlussendlich können Pandoc, die nötigen Extensions und die [TeX Live][texlive] LaTeX-Umgebung installiert werden.
 ```bash
 brew install pandoc pandoc-crossref texlive
 pip install pandoc-acro pandoc-include --user
 ```
 
 [docker-image]: https://hub.docker.com/r/siphalor/extended-pandoc
+[texlive]: https://tug.org/texlive/
 
 # Demo
 

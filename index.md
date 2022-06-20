@@ -114,24 +114,27 @@ scoop install uutils-coreutils
 Now for the actual installation execute the following commands (tinytex ist a texlive distribution)
 ```pwsh 
 scoop bucket add r-bucket https://github.com/cderv/r-bucket.git
-scoop install tinytex
-pip install pandoc pandoc-acro pandoc-include pandoc-crossref --user
+scoop install tinytex pandoc pandoc-crossref
+pip install pandoc-acro pandoc-include --user
 ```
 
 ### Linux
 
 Start terminal
 
-**If python is (for some bizarre reason) not installed**
+**If homebrew is not installed**
 ```bash
-apt install python
-python -m ensure pip
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
+echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
 ```
-(`apt` is for ubuntu, replace with `yum`, `pacman`, `dnf`, `apk`, `apt-get`, or `zypper` as needed)
 
+Now for the actual installation execute the following commands
 ```bash
-sudo apt install texlive-full
-pip install pandoc pandoc-acro pandoc-include pandoc-crossref --user
+python -m ensure pip
+brew install pandoc-crossref texlive
+pip install pandoc pandoc-acro pandoc-include--user
 ```
 
 [docker-image]: https://hub.docker.com/r/siphalor/extended-pandoc

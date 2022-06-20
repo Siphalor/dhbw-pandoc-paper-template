@@ -118,6 +118,22 @@ scoop install tinytex
 pip install pandoc pandoc-acro pandoc-include pandoc-crossref --user
 ```
 
+### Linux
+
+Start terminal
+
+**If python is (for some bizarre reason) not installed**
+```bash
+apt install python
+python -m ensure pip
+```
+(`apt` is for ubuntu, replace with `yum`, `pacman`, `dnf`, `apk`, `apt-get`, or `zypper` as needed)
+
+```bash
+sudo apt install texlive-full
+pip install pandoc pandoc-acro pandoc-include pandoc-crossref --user
+```
+
 [docker-image]: https://hub.docker.com/r/siphalor/extended-pandoc
 
 # Demo

@@ -55,7 +55,7 @@ colorlinks: true # Colorize links, useful for the digital version
 
 # Einleitung
 
-Eine Vorlage, um wissenschaftliche Arbeiten für die +dhbw in Pandoc verfassen zu können.
+Eine Vorlage, um wissenschaftliche Arbeiten für die +dhbw in [Pandoc](https://pandoc.org) verfassen zu können.
 
 Dabei werden die in [@DHBW.2021] beschriebenen Richtlinien nach bestem Gewissen umgesetzt.
 
@@ -90,7 +90,63 @@ Die Liste der Extensions findet sich in [der Readme des Docker-Images][docker-im
 Anschließend kann mit `make index.pdf` die PDF-Datei kompiliert werden.
 Unter Windows kann sich der entsprechende Befehl aus dem `Makefile` entnommen werden.
 
+### Windows
+
+Im Folgenden wird die Installation unter Windows beschrieben.
+Die folgenden Befehle sollten in PowerShell ausgeführt werden (alternativ [pwsh](https://github.com/powershell/powershell)).
+
+Als Package Manager wird Scoop genutzt, da dieser einfache Installationen und Updates ohne administrative Rechte ermöglicht.
+```pwsh
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+irm get.scoop.sh | iex
+```
+
+Weiterhin wird `pip` benötigt um die Python-basierten Extensions zu installieren:
+```pwsh
+scoop install python
+python -m ensurepip
+```
+
+Nun benötigen wir noch den `make` command aus den GNU coreutils.
+Hier kann beispielsweise die Rust-Implementierung dieser Tools verwendet werden:
+```pwsh
+scoop install uutils-coreutils
+```
+
+Abschließend werden jetzt die Pandoc- und Latex-Umgebung installiert.
+In den folgenden Befehlen wird [TinyTeX](https://github.com/rstudio/tinytex), eine [TeX-Live][https://tug.org/texlive/]-Distribution, verwendet.  
+Anstelle von `tinytex` kann auch [MikTex](https://miktex.org/howto/install-miktex) (bei Scoop als `miktex`) verwendet werden.
+Dies bietet unter anderem eine grafische Oberfläche und eine einsteigerfreundlichere Paket-Verwaltung.
+
+```pwsh 
+# texlive installation
+scoop bucket add r-bucket https://github.com/cderv/r-bucket.git
+scoop install tinytex
+# pandoc installation
+scoop install pandoc pandoc-crossref
+pip install pandoc-acro pandoc-include --user
+```
+
+### Linux
+
+Der Einfachheit halber am besten zunächst den [Homebrew](https://brew.sh/) Package Manager installieren:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Python ist in den allermeisten Linux-Distributionen vorinstalliert, eventuell ist es als `python` statt `python3` verfügbar:
+```bash
+python3 -m ensurepip
+```
+
+Schlussendlich können Pandoc, die nötigen Extensions und die [TeX Live][texlive] LaTeX-Umgebung installiert werden.
+```bash
+brew install pandoc pandoc-crossref texlive
+pip install pandoc-acro pandoc-include --user
+```
+
 [docker-image]: https://hub.docker.com/r/siphalor/extended-pandoc
+[texlive]: https://tug.org/texlive/
 
 # Demo
 
@@ -130,7 +186,7 @@ Unterstützt werden alle typischen Markdown-Features, sowie die nativen Erweiter
 
   | Spalte 1 | Spalte 2 | Spalte 3 |
   | :------- | :------: | -------: |
-  | A        | B        | C        |
+  | A        |    B     |        C |
   : Tabellen-Beschriftung {#tbl:some-table}
 
 - `Code` und Code-Blöcke:

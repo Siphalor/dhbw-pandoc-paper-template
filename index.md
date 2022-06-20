@@ -92,49 +92,52 @@ Unter Windows kann sich der entsprechende Befehl aus dem `Makefile` entnommen we
 
 ### Windows
 
-Start powershell
+Im folgenden wird die installation unter Windows beschrieben. Zunächst öffnen wir eine Powershell Sitzung, vorzüglich [pwsh](https://github.com/powershell/powershell), denn die Microsoft proprietäre Implementierung ist besonders. 
 
-**If scoop is not installed**
+Als package-manager wird scoop genutzt, denn der benötigt keine administrativen Rechte.
 ```pwsh
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh | iex
 ```
 
-**If python is not installed**
+Mit Pip werden die nicht auf scoop auffindbaren packages installiert.
 ```pwsh
 scoop install python
 python -m ensure pip
 ```
 
-**If GNU make is not available** (Rust implementation of GNU core utils)
+Zu gut der Letzt benötigen wir noch Makefiles `make` command aus den GNU core utils. Hier verwenden wir die Rust Implementation.
 ```pwsh
 scoop install uutils-coreutils
 ```
 
-Now for the actual installation execute the following commands (tinytex ist a texlive distribution)
+Jetzt werden die `pandoc` Abhängigkeiten und eine Latex engine, hier `tinytex` eine `texlive` distribution, eingesetzt. Der nicht Konsolen-Freund sollte anstatt `tinytex` [MikTex](https://miktex.org/howto/install-miktex) als Benutzer installieren, das macht das verwalten von LaTex packages angenehmer.
+
 ```pwsh 
+# texlive installation
 scoop bucket add r-bucket https://github.com/cderv/r-bucket.git
-scoop install tinytex pandoc pandoc-crossref
+scoop install tinytex
+# pandoc installation
+scoop install pandoc pandoc-crossref
 pip install pandoc-acro pandoc-include --user
 ```
 
 ### Linux
 
-Start terminal
-
-**If homebrew is not installed**
+Zunächst den [homebrew](https://brew.sh/) ~~package~~-manager installieren.
 ```bash
-test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
-echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Now for the actual installation execute the following commands
+Falls `pip` nicht installiert ist `python` `pip` beziehen. `python3` ist manchmal auch nur `python` o.ä. kommt auf Eur setup an.
 ```bash
-python -m ensure pip
-brew install pandoc-crossref texlive
-pip install pandoc pandoc-acro pandoc-include--user
+python3 -m ensure pip
+```
+
+Zu gut der Letzt können die [pandoc](https://pandoc.org/) Abhängigkeiten und die [texlive](https://tug.org/texlive/) LaTex engine installiert werden.
+```bash
+brew install pandoc pandoc-crossref texlive
+pip install pandoc-acro pandoc-include --user
 ```
 
 [docker-image]: https://hub.docker.com/r/siphalor/extended-pandoc

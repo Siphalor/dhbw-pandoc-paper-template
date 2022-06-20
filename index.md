@@ -111,7 +111,7 @@ Zu gut der Letzt benötigen wir noch Makefiles `make` command aus den GNU core u
 scoop install uutils-coreutils
 ```
 
-Jetzt werden die `pandoc` Abhängigkeiten und eine Latex engine, hier `tinytex` eine `texlive` distribution, eingesetzt. Der nicht Konsolen-Freund sollte anstatt `tinytex` [MikTex](https://miktex.org/howto/install-miktex) als Benutzer installieren, das macht das verwalten von LaTex packages angenehmer.
+Jetzt werden die [pandoc](https://pandoc.org/) Abhängigkeiten und eine Latex engine, hier [tinytex](https://github.com/rstudio/tinytex) eine [texlive](https://tug.org/texlive/) distribution, eingesetzt. Der nicht Konsolen-Freund sollte anstatt `tinytex` [MikTex](https://miktex.org/howto/install-miktex) als Benutzer installieren, das macht das verwalten von LaTex packages angenehmer.
 
 ```pwsh 
 # texlive installation

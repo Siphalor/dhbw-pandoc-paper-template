@@ -28,6 +28,8 @@ bibliography:
 
 strip-comments: true
 
+listings: true
+
 variables:
   fontsize: 11.5pt
   classoption:
@@ -37,3 +39,4 @@ variables:
   papersize: a4
   linestretch: 1.5
   csquotes: true
+  listings: true

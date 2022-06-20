@@ -118,7 +118,7 @@ In den folgenden Befehlen wird [TinyTeX](https://github.com/rstudio/tinytex), ei
 Anstelle von `tinytex` kann auch [MikTex](https://miktex.org/howto/install-miktex) (bei Scoop als `miktex`) verwendet werden.
 Dies bietet unter anderem eine grafische Oberfläche und eine einsteigerfreundlichere Paket-Verwaltung.
 
-```pwsh 
+```sh
 # texlive installation
 scoop bucket add r-bucket https://github.com/cderv/r-bucket.git
 scoop install tinytex

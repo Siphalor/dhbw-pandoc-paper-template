@@ -90,6 +90,34 @@ Die Liste der Extensions findet sich in [der Readme des Docker-Images][docker-im
 Anschließend kann mit `make index.pdf` die PDF-Datei kompiliert werden.
 Unter Windows kann sich der entsprechende Befehl aus dem `Makefile` entnommen werden.
 
+### Windows
+
+Start powershell
+
+**If scoop is not installed**
+```pwsh
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+irm get.scoop.sh | iex
+```
+
+**If python is not installed**
+```pwsh
+scoop install python
+python -m ensure pip
+```
+
+**If GNU make is not available** (Rust implementation of GNU core utils)
+```pwsh
+scoop install uutils-coreutils
+```
+
+Now for the actual installation execute the following commands (tinytex ist a texlive distribution)
+```pwsh 
+scoop bucket add r-bucket https://github.com/cderv/r-bucket.git
+scoop install tinytex
+pip install pandoc pandoc-acro pandoc-include pandoc-crossref --user
+```
+
 [docker-image]: https://hub.docker.com/r/siphalor/extended-pandoc
 
 # Demo
@@ -130,7 +158,7 @@ Unterstützt werden alle typischen Markdown-Features, sowie die nativen Erweiter
 
   | Spalte 1 | Spalte 2 | Spalte 3 |
   | :------- | :------: | -------: |
-  | A        | B        | C        |
+  | A        |    B     |        C |
   : Tabellen-Beschriftung {#tbl:some-table}
 
 - `Code` und Code-Blöcke:

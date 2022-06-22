@@ -80,7 +80,7 @@ Unter Linux kann folgender Befehl zum Kompilieren der PDF mit Docker verwendet w
 
 ```sh
 docker run --rm --volume $(pwd):/data --entrypoint make siphalor/extended-pandoc
-``` 
+```
 
 ## Manuell
 
@@ -114,17 +114,22 @@ scoop install uutils-coreutils
 ```
 
 Abschließend werden jetzt die Pandoc- und Latex-Umgebung installiert.
-In den folgenden Befehlen wird [TinyTeX](https://github.com/rstudio/tinytex), eine [TeX-Live][https://tug.org/texlive/]-Distribution, verwendet.  
+In den folgenden Befehlen wird [TinyTeX](https://github.com/rstudio/tinytex), eine [TeX-Live](https://tug.org/texlive/)-Distribution, verwendet.
 Anstelle von `tinytex` kann auch [MikTex](https://miktex.org/howto/install-miktex) (bei Scoop als `miktex`) verwendet werden.
 Dies bietet unter anderem eine grafische Oberfläche und eine einsteigerfreundlichere Paket-Verwaltung.
 
-```pwsh 
+```pwsh
 # texlive installation
 scoop bucket add r-bucket https://github.com/cderv/r-bucket.git
 scoop install tinytex
 # pandoc installation
 scoop install pandoc pandoc-crossref
 pip install pandoc-acro pandoc-include --user
+```
+
+[SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) können mit GNOME `librsvg` Eingebettet werden. Windows muss diese Library Nachtbeziehen.
+```pwsh
+scoop install https://gist.githubusercontent.com/LuminousPath/55c9a416ab8530cd5875e29e8197f22c/raw/fa5ef794486acfa3d130028b9626d24c7d1ed5ad/rsvg-convert.json
 ```
 
 ### Linux
@@ -143,6 +148,11 @@ Schlussendlich können Pandoc, die nötigen Extensions und die [TeX Live][texliv
 ```bash
 brew install pandoc pandoc-crossref texlive
 pip install pandoc-acro pandoc-include --user
+```
+
+[SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) können mit GNOME `librsvg` Eingebettet werden. Die Library ist auf einigen Distos bereits installiert, ansonsten muss die Library bezogen werden.
+```pwsh
+brew install librsvg
 ```
 
 [docker-image]: https://hub.docker.com/r/siphalor/extended-pandoc
@@ -220,7 +230,7 @@ Durch Extensions wird zusätzliche Funktionalität zur Verfügung gestellt:
       dhbw:
         short: DHBW
     ```
-  
+
     Und anschließend verwendet werden: +dhbw; [+dhbw]{.long}
 
 [`pandoc-crossref`](https://github.com/lierdakil/pandoc-crossref) --- Referenzen:

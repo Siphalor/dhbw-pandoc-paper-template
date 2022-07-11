@@ -33,6 +33,8 @@ company-logo: img/company_logo.png
 company-tutor: Herr Müller
 university-tutor: Frau Prof. Dr. Meier
 
+# hide-declaration-of-independence: true # Hides the declaration for non-official works
+
 abstract: | # Optional
   Dies ist ein zu kurzes Abstract.
   Das Abstract für tatsächliche Projektarbeiten sollte 200 bis 250 Wörter lang sein.

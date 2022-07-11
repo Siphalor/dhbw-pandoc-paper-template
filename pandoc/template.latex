@@ -498,6 +498,8 @@ $endif$
 
 \pagebreak
 
+$if(hide-declaration-of-independence)$
+$else$
 \chapter*{Erklärung}
 
 {
@@ -532,6 +534,7 @@ $author$
 $endfor$
 }
 \pagebreak
+$endif$
 
 $if(abstract)$
 \hspace{0pt}

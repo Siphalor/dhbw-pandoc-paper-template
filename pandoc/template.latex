@@ -413,12 +413,12 @@ $endif$
 $if(title)$
 \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
+\renewcommand{\and}{\\}
 $if(subtitle)$
 $if(beamer)$
 $else$
 \usepackage{etoolbox}
 \makeatletter
-\renewcommand{\and}{\\}
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
@@ -460,8 +460,9 @@ $else$
 			$endif$
 			\includegraphics[height=12ex]{img/logo-dhbw.pdf}
 		}\\[20ex]
-		{ \huge \sffamily \bfseries \@title }\\[2ex]
-		{ \sffamily \bfseries \@subtitle }\\[3ex]
+		{ \huge \sffamily \bfseries \@title }\\[1ex]
+		$if(subtitle)$ { \sffamily \bfseries \@subtitle }\\[2ex] $endif$
+		\vspace{1ex}
 		{ \Large \sffamily \bfseries $paper-type$ }\\[5ex]
 		{ \large des Studiengangs $degree-course$ \\
 		an der Dualen Hochschule Baden-Württemberg $university-location$ }\\[5ex]

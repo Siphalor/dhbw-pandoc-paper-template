@@ -49,6 +49,7 @@ colorlinks: true # Colorize links, useful for the digital version
 
 # lot: true # Enable list of tables
 # lof: true # Enable list of figures
+# lol: true # Enable list of listings
 ---
 
 \pagebreak

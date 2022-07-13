@@ -587,6 +587,9 @@ $endif$
 $if(lot)$
 \listoftables
 $endif$
+$if(lol)$
+\listoflistings
+$endif$
 $if(linestretch)$
 \setstretch{$linestretch$}
 $endif$

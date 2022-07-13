@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-DE" xml:lang="de-DE">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Maxi Muster" />
+  <meta name="author" content="Max Muster" />
+  <title>Pandoc-Vorlage für Arbeiten an der DHBW-Mosbach</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 11.5pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: left;
+      font-size: 85%;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  
+  
+  
+  
+  
+  
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Pandoc-Vorlage für Arbeiten an der DHBW-Mosbach</h1>
+<p class="subtitle"><p>Unterstützt Projektarbeiten, Studienarbeiten und
+Bachelorarbeiten</p></p>
+<p><b>Bachelorarbeit T3_3300</b></p>
+<p>
+	des Studiengangs Angewandte Informatik
+	an der Dualen Hochschule Baden-Württemberg Mosbach
+</p>
+<p class="author">Maxi Muster</p>
+<p class="author">Max Muster</p>
+<table>
+<tr>
+<th>Bearbeitungszeitraum</th>
+<td>12 Wochen</td>
+</tr>
+<tr>
+<th>Matrikelnummer, Kurs</th>
+<td>1234567 &amp; 1234568, MOS-TINF19X</td>
+</tr>
+<tr>
+<th>Dualer Partner</th>
+<td>My Cool Company, Berlin</td>
+</tr>
+<tr>
+<th>Betreuer*in des Dualen Partners</th>
+<td>Herr Müller</td>
+</tr>
+<tr>
+<th>Gutachter*in der Dualen Hochschule</th>
+<td>Frau Prof. Dr. Meier</td>
+</tr>
+</table>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>Dies ist ein zu kurzes Abstract. Das Abstract für tatsächliche
+Projektarbeiten sollte 200 bis 250 Wörter lang sein.</p>
+</div>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>This is a similarly too short abstract, but in English. The abstract
+for actual papers should be between 200 and 250 words in length.</p>
+</div>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#einleitung" id="toc-einleitung"><span
+class="toc-section-number">1</span> Einleitung</a></li>
+<li><a href="#verwendung" id="toc-verwendung"><span
+class="toc-section-number">2</span> Verwendung</a>
+<ul>
+<li><a href="#drone" id="toc-drone"><span
+class="toc-section-number">2.1</span> Drone</a></li>
+<li><a href="#sec:usage-docker" id="toc-sec:usage-docker"><span
+class="toc-section-number">2.2</span> Docker</a></li>
+<li><a href="#manuell" id="toc-manuell"><span
+class="toc-section-number">2.3</span> Manuell</a>
+<ul>
+<li><a href="#windows" id="toc-windows"><span
+class="toc-section-number">2.3.1</span> Windows</a></li>
+<li><a href="#linux" id="toc-linux"><span
+class="toc-section-number">2.3.2</span> Linux</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#demo" id="toc-demo"><span
+class="toc-section-number">3</span> Demo</a>
+<ul>
+<li><a href="#überschrift-ebene-2" id="toc-überschrift-ebene-2"><span
+class="toc-section-number">3.1</span> Überschrift-Ebene 2</a>
+<ul>
+<li><a href="#überschrift-ebene-3" id="toc-überschrift-ebene-3"><span
+class="toc-section-number">3.1.1</span> Überschrift-Ebene 3</a></li>
+</ul></li>
+<li><a href="#sec:extensions" id="toc-sec:extensions"><span
+class="toc-section-number">3.2</span> Extensions</a></li>
+</ul></li>
+<li><a href="#literaturverzeichnis"
+id="toc-literaturverzeichnis">Literaturverzeichnis</a></li>
+</ul>
+</nav>
+<div id="acronym-list">
+<h1 class="unnumbered" id="acronyms">Abkürzungsverzeichnis</h1>
+<ul>
+<li><strong>DHBW</strong>: Duale Hochschule Baden-Württemberg</li>
+</ul>
+</div>
+<h1 data-number="1" id="einleitung"><span
+class="header-section-number">1</span> Einleitung</h1>
+<p>Eine Vorlage, um wissenschaftliche Arbeiten für die Duale Hochschule
+Baden-Württemberg (DHBW) in <a href="https://pandoc.org">Pandoc</a>
+verfassen zu können.</p>
+<p>Dabei werden die in <span class="citation"
+data-cites="DHBW.2021">[1]</span> beschriebenen Richtlinien nach bestem
+Gewissen umgesetzt.</p>
+<h1 data-number="2" id="verwendung"><span
+class="header-section-number">2</span> Verwendung</h1>
+<h2 data-number="2.1" id="drone"><span
+class="header-section-number">2.1</span> Drone</h2>
+<p>Am einfachsten ist die Verwendung mit <a
+href="https://drone.io">Drone</a>. Wenn Drone und Docker installiert
+sind, reicht folgender Befehl:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">drone</span> exec</span></code></pre></div>
+<p>Basierend auf Drone lässt sich auch alternativ zu GitHub-Actions eine
+Build-Automatisierung nutzen.</p>
+<h2 data-number="2.2" id="sec:usage-docker"><span
+class="header-section-number">2.2</span> Docker</h2>
+<p>Um diese Vorlage zu verwenden kann das Docker-Image <a
+href="https://hub.docker.com/r/siphalor/extended-pandoc"><code>siphalor/extended-pandoc</code></a>
+verwendet werden.</p>
+<p>Unter Linux kann folgender Befehl zum Kompilieren der PDF mit Docker
+verwendet werden:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--volume</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data <span class="at">--entrypoint</span> make siphalor/extended-pandoc</span></code></pre></div>
+<h2 data-number="2.3" id="manuell"><span
+class="header-section-number">2.3</span> Manuell</h2>
+<p>Alternativ können die nötigen Extensions selbst installiert werden.
+Die Liste der Extensions findet sich in <a
+href="https://hub.docker.com/r/siphalor/extended-pandoc">der Readme des
+Docker-Images</a>.</p>
+<p>Anschließend kann mit <code>make index.pdf</code> die PDF-Datei
+kompiliert werden. Unter Windows kann sich der entsprechende Befehl aus
+dem <code>Makefile</code> entnommen werden.</p>
+<h3 data-number="2.3.1" id="windows"><span
+class="header-section-number">2.3.1</span> Windows</h3>
+<p>Im Folgenden wird die Installation unter Windows beschrieben. Die
+folgenden Befehle sollten in PowerShell ausgeführt werden (alternativ <a
+href="https://github.com/powershell/powershell">pwsh</a>).</p>
+<p>Als Package Manager wird Scoop genutzt, da dieser einfache
+Installationen und Updates ohne administrative Rechte ermöglicht.</p>
+<pre class="pwsh"><code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+irm get.scoop.sh | iex</code></pre>
+<p>Weiterhin wird <code>pip</code> benötigt um die Python-basierten
+Extensions zu installieren:</p>
+<pre class="pwsh"><code>scoop install python
+python -m ensurepip</code></pre>
+<p>Nun benötigen wir noch den <code>make</code> command aus den GNU
+coreutils. Hier kann beispielsweise die Rust-Implementierung dieser
+Tools verwendet werden:</p>
+<pre class="pwsh"><code>scoop install uutils-coreutils</code></pre>
+<p>Abschließend werden jetzt die Pandoc- und Latex-Umgebung installiert.
+In den folgenden Befehlen wird <a
+href="https://github.com/rstudio/tinytex">TinyTeX</a>, eine
+[TeX-Live][https://tug.org/texlive/]-Distribution, verwendet.<br />
+Anstelle von <code>tinytex</code> kann auch <a
+href="https://miktex.org/howto/install-miktex">MikTex</a> (bei Scoop als
+<code>miktex</code>) verwendet werden. Dies bietet unter anderem eine
+grafische Oberfläche und eine einsteigerfreundlichere
+Paket-Verwaltung.</p>
+<pre class="pwsh"><code># texlive installation
+scoop bucket add r-bucket https://github.com/cderv/r-bucket.git
+scoop install tinytex
+# pandoc installation
+scoop install pandoc pandoc-crossref
+pip install pandoc-acro pandoc-include --user</code></pre>
+<h3 data-number="2.3.2" id="linux"><span
+class="header-section-number">2.3.2</span> Linux</h3>
+<p>Der Einfachheit halber am besten zunächst den <a
+href="https://brew.sh/">Homebrew</a> Package Manager installieren:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/bin/bash</span> <span class="at">-c</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="va">)</span><span class="st">&quot;</span></span></code></pre></div>
+<p>Python ist in den allermeisten Linux-Distributionen vorinstalliert,
+eventuell ist es als <code>python</code> statt <code>python3</code>
+verfügbar:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> ensurepip</span></code></pre></div>
+<p>Schlussendlich können Pandoc, die nötigen Extensions und die <a
+href="https://tug.org/texlive/">TeX Live</a> LaTeX-Umgebung installiert
+werden.</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install pandoc pandoc-crossref texlive</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandoc-acro pandoc-include <span class="at">--user</span></span></code></pre></div>
+<h1 data-number="3" id="demo"><span
+class="header-section-number">3</span> Demo</h1>
+<p>Unterstützt werden alle typischen Markdown-Features, sowie die
+nativen Erweiterungen von Pandoc:</p>
+<ul>
+<li><p><em>kursiv</em>, <strong>fett</strong>,
+<strong><em>beides</em></strong>, <del>durchgestrichen</del>,
+<u>unterstrichen</u>, <span
+class="smallcaps">Kapitälchen</span></p></li>
+<li><p>Definitionen und Listen:</p>
+<dl>
+<dt>Wort:</dt>
+<dd>
+Dies ist eine Beschreibung über mehrere Zeilen.
+</dd>
+<dt>Unsortierte Listen:</dt>
+<dd>
+<ul>
+<li>Eins</li>
+<li>Zwei</li>
+<li>Drei</li>
+</ul>
+</dd>
+<dt>Unsortierte Listen:</dt>
+<dd>
+<ol type="1">
+<li>Eins</li>
+<li>Zwei</li>
+<li>Drei</li>
+</ol>
+</dd>
+</dl></li>
+<li><p>Fußnoten<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a><a href="#fn2" class="footnote-ref"
+id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+</ul>
+<ul>
+<li><p>Zitation/Quellenangaben <span class="citation"
+data-cites="DHBW.2021">[1, Abschn. 9.1]</span>, <span class="citation"
+data-cites="DHBW.2021">[1, S. 23]</span></p></li>
+<li><p>Latex-Ausdrücke, zum Beispiel für mathematische Ausdrücke <span
+class="math inline">$\sum_{i=1}^n\frac{1}{a_b}\cdot i$</span></p></li>
+<li><p>Bilder</p>
+<figure>
+<img src="img/company_logo.png" id="fig:some-image"
+alt="Abbildung 1: Firmen-Logo" />
+<figcaption aria-hidden="true">Abbildung 1: Firmen-Logo</figcaption>
+</figure></li>
+<li><p>Tabellen:</p>
+<div id="tbl:some-table">
+<table>
+<caption>Tabelle 1: Tabellen-Beschriftung</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Spalte 1</th>
+<th style="text-align: center;">Spalte 2</th>
+<th style="text-align: right;">Spalte 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: right;">C</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+<li><p><code>Code</code> und Code-Blöcke:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello World&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<div id="lst:floating-code-block" class="listing python">
+<p>Listing 1: Ein Code-Block der nicht im Fließtext ist!</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Floating Code Block!&quot;</span>)</span></code></pre></div>
+</div>
+<p>Hier geht der Stichpunkt weiter.</p></li>
+</ul>
+<p>Für weitere native Pandoc-Features, siehe <a
+href="https://pandoc.org/MANUAL.html">die offizielle
+Dokumentation</a>.</p>
+<h2 data-number="3.1" id="überschrift-ebene-2"><span
+class="header-section-number">3.1</span> Überschrift-Ebene 2</h2>
+<h3 data-number="3.1.1" id="überschrift-ebene-3"><span
+class="header-section-number">3.1.1</span> Überschrift-Ebene 3</h3>
+<h4 data-number="3.1.1.1" id="überschrift-ebene-4"><span
+class="header-section-number">3.1.1.1</span> Überschrift-Ebene 4</h4>
+<h5 data-number="3.1.1.1.1" id="überschrift-ebene-5"><span
+class="header-section-number">3.1.1.1.1</span> Überschrift-Ebene 5</h5>
+<h2 data-number="3.2" id="sec:extensions"><span
+class="header-section-number">3.2</span> Extensions</h2>
+<p>Durch Extensions wird zusätzliche Funktionalität zur Verfügung
+gestellt:</p>
+<dl>
+<dt><a
+href="https://github.com/kprussing/pandoc-acro"><code>pandoc-acro</code></a>
+— Abkürzungen:</dt>
+<dd>
+<p>Abkürzungen können in der <code>acronyms.yaml</code> definiert
+werden:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acronyms</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">options</span><span class="kw">:</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">list/heading</span><span class="kw">:</span><span class="at"> chapter*</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">make-links</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">dhbw</span><span class="kw">:</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">short</span><span class="kw">:</span><span class="at"> DHBW</span></span></code></pre></div>
+<p>Und anschließend verwendet werden: DHBW; Duale Hochschule
+Baden-Württemberg</p>
+</dd>
+<dt><a
+href="https://github.com/lierdakil/pandoc-crossref"><code>pandoc-crossref</code></a>
+— Referenzen:</dt>
+<dd>
+Referenzen für Abschnitte (Abschnitt 3.2), Bilder (Abbildung 1),
+Code-Blöcke (Listing 1) und Tabellen (Tabelle 1).
+</dd>
+</dl>
+<h1 class="unnumbered"
+id="literaturverzeichnis">Literaturverzeichnis</h1>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-DHBW.2021" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">DHBW Fachkommission Technik, <span>„Leitlinien
+für die Bearbeitung und Dokumentation von schriftlichen Arbeiten -
+Fachkommission Technik“</span>. Okt-2021 [Online]. Verfügbar unter: <a
+href="https://www.mosbach.dhbw.de/fileadmin/user_upload/dhbw/studiengaenge/ai/191212_Leitlinien_Praxismodule_Studien_Bachelorarbeiten.pdf">https://www.mosbach.dhbw.de/fileadmin/user_upload/dhbw/studiengaenge/ai/191212_Leitlinien_Praxismodule_Studien_Bachelorarbeiten.pdf</a>.
+[Zugegriffen: 10-Juni-2022]</div>
+</div>
+</div>
+<section class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Dies ist eine Fußnote.<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Dies ist eine zweite Fußnote.<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

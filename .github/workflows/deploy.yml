@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
           submodules: 'recursive'
       - name: Make PDF
-        run: make index.pdf
+        run: make index.pdf index.html
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         if: ${{ !env.ACT }}
@@ -27,12 +27,13 @@ jobs:
           name: compiled
           path: |
             index.pdf
+            index.html
           if-no-files-found: error
       - name: Copy Outputs
         if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
         run: |
           mkdir -p out
-          mv index.pdf out/
+          mv index.pdf index.html out/
       - name: Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}

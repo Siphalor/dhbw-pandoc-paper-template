@@ -45,7 +45,7 @@ if (!(test-cmd "make")) {
 # install pdflatex
 if (!(test-cmd "pdflatex")) {
   Write-Host "pdflatex not found. Installing MikTex now..." -ForegroundColor Yellow
-  choco install miktex.install \ThisUser
+  choco install miktex --params "\ThisUser"
   Write-Host "Remember to update MikTex dependencies!" -ForegroundColor Yellow
 }
 

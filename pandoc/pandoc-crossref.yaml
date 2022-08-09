@@ -22,3 +22,5 @@ secPrefix:
 lofTitle: "Abbildungsverzeichnis"
 lotTitle: "Tabellenverzeichnis"
 lolTitle: "Listingverzeichnis"
+
+linkReferences: true

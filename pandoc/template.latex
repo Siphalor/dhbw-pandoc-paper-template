@@ -439,6 +439,25 @@ $if(logo)$
 $endif$
 $endif$
 
+\usepackage{scrlayer-scrpage}
+$if(footer.pagemark.left)$
+$if(footer.authors)$
+\lofoot*{$for(author)$$author$ $sep$ $endfor$} %\@author
+$endif$ %(footer.authors)
+\cofoot*{}
+\rofoot*{\pagemark}
+$elseif(footer.pagemark.right)$
+\lofoot*{\pagemark}
+\cofoot*{}
+$if(footer.authors)$
+\rofoot*{$for(author)$$author$ $sep$ $endfor$} %\@author
+$endif$ %(footer.authors)
+$else$
+$if(footer.authors)$
+\cofoot*{$for(author)$$author$ $sep$ $endfor$} %\@author
+$endif$ %(footer.authors)
+$endif$ %(pagemark)
+
 \begin{document}
 
 $if(roman-numerals)$

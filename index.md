@@ -33,6 +33,8 @@ company-logo: img/company_logo.png
 company-tutor: Herr Müller
 university-tutor: Frau Prof. Dr. Meier
 
+# hide-declaration-of-independence: true # Hides the declaration for non-official works
+
 abstract: | # Optional
   Dies ist ein zu kurzes Abstract.
   Das Abstract für tatsächliche Projektarbeiten sollte 200 bis 250 Wörter lang sein.
@@ -47,6 +49,7 @@ colorlinks: true # Colorize links, useful for the digital version
 
 # lot: true # Enable list of tables
 # lof: true # Enable list of figures
+# lol: true # Enable list of listings
 ---
 
 \pagebreak
@@ -204,6 +207,12 @@ Unterstützt werden alle typischen Markdown-Features, sowie die nativen Erweiter
   ```python
   print("Hello World");
   ```
+  
+  ```{.python caption="Ein Code-Block der nicht im Fließtext ist!" #lst:floating-code-block}
+  print("Floating Code Block!")
+  ```
+
+  Hier geht der Stichpunkt weiter.
 
 Für weitere native Pandoc-Features, siehe [die offizielle Dokumentation](https://pandoc.org/MANUAL.html).
 
@@ -234,7 +243,7 @@ Durch Extensions wird zusätzliche Funktionalität zur Verfügung gestellt:
     Und anschließend verwendet werden: +dhbw; [+dhbw]{.long}
 
 [`pandoc-crossref`](https://github.com/lierdakil/pandoc-crossref) --- Referenzen:
-: Referenzen für Abschnitte (@sec:extensions), Bilder (@fig:some-image) und Tabellen (@tbl:some-table).
+: Referenzen für Abschnitte (@sec:extensions), Bilder (@fig:some-image), Code-Blöcke (@lst:floating-code-block) und Tabellen (@tbl:some-table).
 
 
 # Literaturverzeichnis

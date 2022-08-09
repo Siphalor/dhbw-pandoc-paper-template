@@ -1,3 +1,15 @@
+if ((New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+  Write-Host "Skript hat bereits Administratorrechte."
+}
+else {
+  # Starte das skript neu, als Administrator.
+  Write-Host "Evaluate rights..."
+  $process = New-Object System.Diagnostics.ProcessStartInfo "powershell"
+  $process.Arguments = $myInvocation.MyCommand.Definition;
+  $process.Verb = "runas";
+  [System.Diagnostics.Process]::Start($process)
+  exit
+}
 
 function test-cmd($command) {
   return Get-Command $command -errorAction SilentlyContinue

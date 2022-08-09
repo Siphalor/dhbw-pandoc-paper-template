@@ -370,7 +370,6 @@ $if(lang)$
 \usepackage[bidi=default]{babel}
 \fi
 \babelprovide[main,import]{$babel-lang$}
-\babelprovide[import]{english}
 $for(babel-otherlangs)$
 \babelprovide[import]{$babel-otherlangs$}
 $endfor$
@@ -485,7 +484,7 @@ $else$
 			\bfseries Betreuer*in des Dualen Partners    & $company-tutor$               \\
 			$endif$
 			$if(university-tutor)$
-			\bfseries Gutachter*in der Dualen Hochschule & $university-tutor$           
+			\bfseries Gutachter*in der Dualen Hochschule & $university-tutor$
 			$endif$
 			\end{tabular}
 			\end{table}

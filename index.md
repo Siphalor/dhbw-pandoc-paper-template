@@ -47,6 +47,8 @@ babel-otherlangs:
 
 colorlinks: true # Colorize links, useful for the digital version
 
+roman-numerals: true # Use roman numerals for content tables
+
 # lot: true # Enable list of tables
 # lof: true # Enable list of figures
 # lol: true # Enable list of listings
@@ -207,7 +209,7 @@ Unterstützt werden alle typischen Markdown-Features, sowie die nativen Erweiter
   ```python
   print("Hello World");
   ```
-  
+
   ```{.python caption="Ein Code-Block der nicht im Fließtext ist!" #lst:floating-code-block}
   print("Floating Code Block!")
   ```

@@ -440,6 +440,14 @@ $endif$
 $endif$
 
 \begin{document}
+
+$if(roman-numerals)$
+% use roman numerals for ordering
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\thechapter.\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+$endif$ %(roman-numerals)
+
 $if(has-frontmatter)$
 \frontmatter
 $endif$
@@ -559,6 +567,14 @@ $for(include-before)$
 $include-before$
 
 $endfor$
+
+$if(roman-numerals)$
+% use roman numerals for ordering
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\thechapter.\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+$endif$ %(roman-numerals)
+
 $if(toc)$
 $if(toc-title)$
 \renewcommand*\contentsname{$toc-title$}
@@ -595,6 +611,7 @@ $endif$
 $if(has-frontmatter)$
 \mainmatter
 $endif$
+
 $body$
 
 $if(has-frontmatter)$

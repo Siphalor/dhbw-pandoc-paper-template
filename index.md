@@ -47,7 +47,8 @@ babel-otherlangs:
 
 colorlinks: true # Colorize links, useful for the digital version
 
-roman-numerals: true # Use roman numerals for content tables
+pagemark-roman: true # Use roman numerals for all pagemarks
+# index-roman: true # Use roman numerals for indices in content tables
 
 footer:
   pagemark:  # Determine where the page counter is located, default is center, options are right & left

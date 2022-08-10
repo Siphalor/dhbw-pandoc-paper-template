@@ -338,6 +338,15 @@ $endif$
 $if(pagestyle)$
 \pagestyle{$pagestyle$}
 $endif$
+
+$if(index-roman)$
+% use roman numerals for ordering
+\usepackage{tocloft}
+\setlength{\cftchapnumwidth}{1.5em}
+\cftsetindents{section}{1.5em}{3.5em}
+\cftsetindents{subsection}{1.5em}{5em}
+$endif$ %(index-roman)
+
 $if(csl-refs)$
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
@@ -460,12 +469,12 @@ $endif$ %(pagemark)
 
 \begin{document}
 
-$if(roman-numerals)$
-% use roman numerals for ordering
+$if(index-roman)$
+% use roman numerals for ordering in content tables
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\thechapter.\Roman{section}}
 \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
-$endif$ %(roman-numerals)
+$endif$ %(index-roman)
 
 $if(has-frontmatter)$
 \frontmatter
@@ -587,12 +596,17 @@ $include-before$
 
 $endfor$
 
-$if(roman-numerals)$
+$if(content-table.index.roman)$
 % use roman numerals for ordering
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\thechapter.\Roman{section}}
 \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
-$endif$ %(roman-numerals)
+$endif$ %(content-table.index.roman)
+
+$if(pagemark-roman)$
+% use roman numerals for page numbers in content tables
+\pagenumbering{Roman}
+$endif$ %(pagemark-roman)
 
 $if(toc)$
 $if(toc-title)$

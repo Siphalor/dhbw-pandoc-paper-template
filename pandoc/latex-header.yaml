@@ -9,5 +9,6 @@ header-includes:
     \setquotestyle{german}
     \usepackage{hyperref}
     \usepackage{graphicx}
+    \usepackage[htt]{hyphenat}
     ```
 ---

@@ -1,0 +1,110 @@
+{
+  "[bibtex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 220
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 220
+  },
+  "[tex]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 220
+  },
+  "cSpell.language": "en,de",
+  "latex-utilities.message.update.show": false,
+  "latex-workshop.latex.tools": [
+    {
+      "args": [
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "command": "latexmk",
+      "env": {},
+      "name": "latexmk"
+    },
+    {
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-lualatex",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "command": "latexmk",
+      "env": {},
+      "name": "lualatexmk"
+    },
+    {
+      "args": ["%DOC%"],
+      "command": "latexmk",
+      "env": {},
+      "name": "latexmk_rconly"
+    },
+    {
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      "command": "pdflatex",
+      "env": {},
+      "name": "pdflatex"
+    },
+    {
+      "args": ["%DOCFILE%"],
+      "command": "bibtex",
+      "env": {},
+      "name": "bibtex"
+    },
+    {
+      "args": [
+        "-e",
+        "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+      ],
+      "command": "Rscript",
+      "env": {},
+      "name": "rnw2tex"
+    },
+    {
+      "args": ["-e", "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"],
+      "command": "julia",
+      "env": {},
+      "name": "jnw2tex"
+    },
+    {
+      "args": [
+        "-e",
+        "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+      ],
+      "command": "julia",
+      "env": {},
+      "name": "jnw2texmintex"
+    },
+    {
+      "args": ["--synctex", "--keep-logs", "%DOC%.tex"],
+      "command": "tectonic",
+      "env": {},
+      "name": "tectonic"
+    }
+  ],
+  "latex-workshop.view.pdf.viewer": "browser",
+  "ltex.additionalRules.enablePickyRules": true,
+  "ltex.additionalRules.motherTongue": "de-DE",
+  "ltex.checkFrequency": "save",
+  "ltex.completionEnabled": true,
+  "ltex.language": "en",
+  "markdown.preview.typographer": true,
+  "hediet.vscode-drawio.codeLinkActivated": true,
+  "svg.preview.mode": "svg",
+  "makefile.extensionOutputFolder": "./.vscode"
+}

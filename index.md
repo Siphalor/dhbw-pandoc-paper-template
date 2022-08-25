@@ -83,7 +83,7 @@ Unter Linux kann folgender Befehl zum Kompilieren der PDF mit Docker verwendet w
 
 ```sh
 docker run --rm --volume $(pwd):/data --entrypoint make siphalor/extended-pandoc
-``` 
+```
 
 ## Manuell
 
@@ -98,36 +98,72 @@ Unter Windows kann sich der entsprechende Befehl aus dem `Makefile` entnommen we
 Im Folgenden wird die Installation unter Windows beschrieben.
 Die folgenden Befehle sollten in PowerShell ausgeführt werden (alternativ [pwsh](https://github.com/powershell/powershell)).
 
-Als Package Manager wird Scoop genutzt, da dieser einfache Installationen und Updates ohne administrative Rechte ermöglicht.
+Als Package Manager wird Chocolatey genutzt, da diese einfache Installationen und Updates ermöglichen.
+Eine Shell mit Administrativen rechten wird benötigt! Diese kann mit [Win]+[X], [A] geöffnet werden.
 ```pwsh
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm get.scoop.sh | iex
+irm https://get.scoop.sh | iex
+irm https://community.chocolatey.org/install.ps1 | iex
+choco feature enable -n=allowGlobalConfirmation
+```
+`allowGlobalConfirmation` schaltet Rückfragen bei der installation ab.
+
+Zunächst wird die VCS `git` installiert:
+```pwsh
+choco install git
 ```
 
 Weiterhin wird `pip` benötigt um die Python-basierten Extensions zu installieren:
 ```pwsh
-scoop install python
+choco install python.install
 python -m ensurepip
 ```
 
 Nun benötigen wir noch den `make` command aus den GNU coreutils.
-Hier kann beispielsweise die Rust-Implementierung dieser Tools verwendet werden:
+Hierzu werden alle GNU coreutils installiert:
 ```pwsh
-scoop install uutils-coreutils
+choco install gnuwin32-coreutils.install
 ```
 
 Abschließend werden jetzt die Pandoc- und Latex-Umgebung installiert.
-In den folgenden Befehlen wird [TinyTeX](https://github.com/rstudio/tinytex), eine [TeX-Live][https://tug.org/texlive/]-Distribution, verwendet.  
-Anstelle von `tinytex` kann auch [MikTex](https://miktex.org/howto/install-miktex) (bei Scoop als `miktex`) verwendet werden.
+In den folgenden Befehlen wird der LATEX compiler [MikTex](https://miktex.org/howto/install-miktex) installiert.
 Dies bietet unter anderem eine grafische Oberfläche und eine einsteigerfreundlichere Paket-Verwaltung.
+Das Argument `\ThisUser` installiert MikTex nur für den aktuellen Benutzer, das ist zu installieren von Updates und Abhängigkeiten empfohlen.
 
-```pwsh 
-# texlive installation
-scoop bucket add r-bucket https://github.com/cderv/r-bucket.git
-scoop install tinytex
-# pandoc installation
-scoop install pandoc pandoc-crossref
-pip install pandoc-acro pandoc-include --user
+```pwsh
+choco install miktex.install \ThisUser
+```
+Nach der installation müssen in MikTex 1. Updates gesucht und 2. Dependencies installiert werden.
+Es wird empfohlen automatisch Depndencies nachzuladen, mit der "update dependencies on-the-fly" option.
+
+
+Nun werden der [Pandoc](https://pandoc.org/) converter und ein paar Erweiterungen installiert.
+```pwsh
+choco install pandoc pandoc-crossref
+pip install pandoc-include --user
+```
+
+Der Python installer für Pandoc Acronyms fügt keinen PATH Eintrag hinzu, dessalb verwenden wir den offiziellen installer
+```pwsh
+mkdir -p ~/apps
+pushd ~/apps ||exit
+git clone https://github.com/kprussing/pandoc-acro.git
+pushd pandoc-acro || exit
+python setup.py install
+popd
+popd
+```
+
+
+[SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) können mit GNOME `librsvg` Eingebettet werden. Windows muss diese Library Nachtbeziehen.
+```pwsh
+choco install rsvg-convert
+```
+#### Automatischer Setup
+
+**Ein [automatischer Setup](setup.ps1) welcher die obg. Schritte durchführt kann wie folgt durchgeführt werden:**
+```pwsh
+./setup.ps1
 ```
 
 ### Linux
@@ -146,6 +182,11 @@ Schlussendlich können Pandoc, die nötigen Extensions und die [TeX Live][texliv
 ```bash
 brew install pandoc pandoc-crossref texlive
 pip install pandoc-acro pandoc-include --user
+```
+
+[SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) können mit GNOME `librsvg` Eingebettet werden. Die Library ist auf einigen Distos bereits installiert, ansonsten muss die Library bezogen werden.
+```pwsh
+brew install librsvg
 ```
 
 [docker-image]: https://hub.docker.com/r/siphalor/extended-pandoc
@@ -229,7 +270,7 @@ Durch Extensions wird zusätzliche Funktionalität zur Verfügung gestellt:
       dhbw:
         short: DHBW
     ```
-  
+
     Und anschließend verwendet werden: +dhbw; [+dhbw]{.long}
 
 [`pandoc-crossref`](https://github.com/lierdakil/pandoc-crossref) --- Referenzen:

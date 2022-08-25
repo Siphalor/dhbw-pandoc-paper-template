@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    "wmaurer.change-case",
+    "hediet.vscode-drawio",
+    "streetsidesoftware.code-spell-checker-german",
+    "codezombiech.gitignore",
+    "nhoizey.gremlins",
+    "tecosaur.latex-utilities",
+    "James-Yu.latex-workshop",
+    "LogInspector.loginspector",
+    "valentjn.vscode-ltex",
+    "ms-vscode.makefile-tools",
+    "yzhang.markdown-all-in-one",
+    "YuTengjing.open-in-external-app",
+    "IBM.output-colorizer",
+    "notZaki.pandocciter",
+    "christian-kohler.path-intellisense",
+    "jock.svg",
+    "Souche.vscode-mindmap",
+    "redhat.vscode-yaml"
+  ]
+}

@@ -370,7 +370,6 @@ $if(lang)$
 \usepackage[bidi=default]{babel}
 \fi
 \babelprovide[main,import]{$babel-lang$}
-\babelprovide[import]{english}
 $for(babel-otherlangs)$
 \babelprovide[import]{$babel-otherlangs$}
 $endfor$
